@@ -7,7 +7,7 @@ const testimonials = [
   {
     name: "Andi Pratama",
     role: "CEO",
-    text: "Gilang sangat profesional dan hasil pekerjaannya memiliki ekspektasi yang baik.",
+    text: "Galang sangat profesional dan hasil pekerjaannya memiliki ekspektasi yang baik.",
   },
   {
     name: "Siti Nurhaliza",
