@@ -256,7 +256,7 @@ export default function Hero() {
 
             <Sparkles size={14} />
 
-            Hi, I&apos;m Gilang Sopyan
+            Hi, I&apos;m Galang Sopyan
           </motion.div>
 
           {/* Heading */}

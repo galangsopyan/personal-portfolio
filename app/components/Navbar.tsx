@@ -27,7 +27,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link
             href="/"
-            aria-label="Gilang Sapi'i - Home"
+            aria-label="Galang Sopyan - Home"
             className="group relative flex items-center gap-2"
           >
             {/* Logo Mark */}
