@@ -86,7 +86,7 @@ export default function Navbar() {
             </div>
 
             {/* Brand name */}
-            <div className="hidden sm:block">
+            <div className="block">
               <div
                 className="
         text-sm
