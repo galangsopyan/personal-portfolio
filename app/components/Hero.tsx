@@ -725,7 +725,7 @@ export default function Hero() {
 
                 <Image
                   src="/profile.jpg"
-                  alt="Gilang Sopyan"
+                  alt="Galang Sopyan"
                   fill
                   priority
                   sizes="
