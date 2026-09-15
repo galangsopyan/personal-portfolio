@@ -94,7 +94,7 @@ export default function Projects() {
             </div>
 
             <a
-              href={project.link}
+              href="/projects"
               className="mt-8 flex w-fit items-center gap-2 font-semibold text-violet-600 dark:text-violet-400"
             >
               View Project

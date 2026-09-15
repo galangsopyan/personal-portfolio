@@ -70,7 +70,7 @@ export default function Footer() {
             </a>
 
             <a
-              href="#contact"
+              href="/contact"
               className="transition-colors hover:text-violet-600"
             >
               Contact
@@ -105,7 +105,7 @@ export default function Footer() {
 
             {/* Email */}
             <motion.a
-              href="mailto:hello@example.com"
+              href="mailto:galangsopyan05@gmail.com"
               aria-label="Email"
               whileHover={{
                 scale: 1.1,

@@ -5,108 +5,283 @@ import {
   Mail,
   MapPin,
   Send,
+  MessageCircle,
+  CheckCircle2,
 } from "lucide-react";
 
 export default function ContactPage() {
   return (
     <main className="min-h-screen pt-32">
       <section className="mx-auto max-w-6xl px-5 py-20">
-        <div className="grid gap-12 lg:grid-cols-2">
-          
+        <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
+          {/* ================= LEFT CONTENT ================= */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
           >
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-violet-600">
               Let's Work Together
             </p>
 
-            <h1 className="mt-4 text-5xl font-black tracking-tight sm:text-6xl">
-              Punya project
-              <span className="block bg-gradient-to-r from-violet-600 to-cyan-400 bg-clip-text text-transparent">
-                menarik?
+            <h1 className="mt-4 text-5xl font-black leading-[1.05] tracking-tight sm:text-6xl">
+              Butuh Website
+              <span className="block bg-gradient-to-r from-violet-600 via-violet-500 to-cyan-400 bg-clip-text text-transparent">
+                untuk Bisnis Anda?
               </span>
             </h1>
 
-            <p className="mt-6 max-w-lg text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-              Mari berdiskusi tentang ide Anda dan
-              wujudkan menjadi pengalaman digital yang
-              menarik.
+            <p className="mt-6 max-w-xl text-lg leading-8 text-zinc-600 dark:text-zinc-400">
+              Saya membantu bisnis, brand, dan personal membangun website
+              modern, profesional, responsif, dan sesuai kebutuhan.
             </p>
 
+            {/* ================= BENEFITS ================= */}
+            <div className="mt-8 space-y-3">
+              {[
+                "Desain modern dan profesional",
+                "Responsive di desktop dan mobile",
+                "Dibangun sesuai kebutuhan bisnis",
+              ].map((item) => (
+                <div key={item} className="flex items-center gap-3">
+                  <CheckCircle2
+                    size={19}
+                    className="shrink-0 text-violet-600"
+                  />
+
+                  <span className="text-sm text-zinc-700 dark:text-zinc-300">
+                    {item}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* ================= CONTACT INFO ================= */}
             <div className="mt-10 space-y-5">
-              <div className="flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-violet-500/10 text-violet-600">
+              {/* Email */}
+              <a
+                href="mailto:galangsopyan05@gmail.com"
+                className="group flex items-center gap-4"
+              >
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-violet-500/10 text-violet-600 transition group-hover:bg-violet-600 group-hover:text-white">
                   <Mail size={20} />
                 </div>
 
                 <div>
-                  <p className="text-xs text-zinc-500">
-                    Email
-                  </p>
+                  <p className="text-xs text-zinc-500">Email</p>
 
-                  <p className="font-medium">
+                  <p className="font-medium transition group-hover:text-violet-600">
                     galangsopyan05@gmail.com
                   </p>
                 </div>
-              </div>
+              </a>
 
+              {/* WhatsApp */}
+              <a
+                href="https://wa.me/6285766724430"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-4"
+              >
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-violet-500/10 text-violet-600 transition group-hover:bg-violet-600 group-hover:text-white">
+                  <MessageCircle size={20} />
+                </div>
+
+                <div>
+                  <p className="text-xs text-zinc-500">WhatsApp</p>
+
+                  <p className="font-medium transition group-hover:text-violet-600">
+                    Chat untuk konsultasi
+                  </p>
+                </div>
+              </a>
+
+              {/* Location */}
               <div className="flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-violet-500/10 text-violet-600">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-violet-500/10 text-violet-600">
                   <MapPin size={20} />
                 </div>
 
                 <div>
-                  <p className="text-xs text-zinc-500">
-                    Location
-                  </p>
+                  <p className="text-xs text-zinc-500">Location</p>
 
-                  <p className="font-medium">
-                    Indonesia
-                  </p>
+                  <p className="font-medium">Indonesia</p>
                 </div>
               </div>
             </div>
           </motion.div>
 
+          {/* ================= CONTACT FORM ================= */}
           <motion.form
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.15 }}
-            className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-xl shadow-black/5 dark:border-zinc-800 dark:bg-zinc-900/50"
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-xl shadow-black/5 dark:border-zinc-800 dark:bg-zinc-900/50 sm:p-8"
           >
+            <div className="mb-7">
+              <h2 className="text-2xl font-bold tracking-tight">
+                Mari mulai project Anda
+              </h2>
+
+              <p className="mt-2 text-sm leading-6 text-zinc-500 dark:text-zinc-400">
+                Ceritakan kebutuhan Anda. Konsultasi awal gratis dan tanpa
+                komitmen.
+              </p>
+            </div>
+
             <div className="grid gap-5">
-              <input
-                type="text"
-                placeholder="Nama"
-                className="rounded-2xl border border-zinc-200 bg-zinc-50 px-5 py-4 outline-none transition focus:border-violet-500 dark:border-zinc-800 dark:bg-zinc-950"
-              />
+              {/* Nama */}
+              <div>
+                <label
+                  htmlFor="name"
+                  className="mb-2 block text-sm font-medium"
+                >
+                  Nama
+                </label>
 
-              <input
-                type="email"
-                placeholder="Email"
-                className="rounded-2xl border border-zinc-200 bg-zinc-50 px-5 py-4 outline-none transition focus:border-violet-500 dark:border-zinc-800 dark:bg-zinc-950"
-              />
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  autoComplete="name"
+                  required
+                  placeholder="Nama Anda"
+                  className="w-full rounded-2xl border border-zinc-200 bg-zinc-50 px-5 py-4 text-sm outline-none transition placeholder:text-zinc-400 focus:border-violet-500 focus:ring-4 focus:ring-violet-500/10 dark:border-zinc-800 dark:bg-zinc-950 dark:placeholder:text-zinc-600"
+                />
+              </div>
 
-              <input
-                type="text"
-                placeholder="Subject"
-                className="rounded-2xl border border-zinc-200 bg-zinc-50 px-5 py-4 outline-none transition focus:border-violet-500 dark:border-zinc-800 dark:bg-zinc-950"
-              />
+              {/* Email */}
+              <div>
+                <label
+                  htmlFor="email"
+                  className="mb-2 block text-sm font-medium"
+                >
+                  Email
+                </label>
 
-              <textarea
-                rows={6}
-                placeholder="Ceritakan tentang project Anda..."
-                className="resize-none rounded-2xl border border-zinc-200 bg-zinc-50 px-5 py-4 outline-none transition focus:border-violet-500 dark:border-zinc-800 dark:bg-zinc-950"
-              />
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  placeholder="nama@email.com"
+                  className="w-full rounded-2xl border border-zinc-200 bg-zinc-50 px-5 py-4 text-sm outline-none transition placeholder:text-zinc-400 focus:border-violet-500 focus:ring-4 focus:ring-violet-500/10 dark:border-zinc-800 dark:bg-zinc-950 dark:placeholder:text-zinc-600"
+                />
+              </div>
 
+              {/* WhatsApp */}
+              <div>
+                <label
+                  htmlFor="whatsapp"
+                  className="mb-2 block text-sm font-medium"
+                >
+                  WhatsApp
+                </label>
+
+                <input
+                  id="whatsapp"
+                  name="whatsapp"
+                  type="tel"
+                  autoComplete="tel"
+                  placeholder="08xxxxxxxxxx"
+                  className="w-full rounded-2xl border border-zinc-200 bg-zinc-50 px-5 py-4 text-sm outline-none transition placeholder:text-zinc-400 focus:border-violet-500 focus:ring-4 focus:ring-violet-500/10 dark:border-zinc-800 dark:bg-zinc-950 dark:placeholder:text-zinc-600"
+                />
+              </div>
+
+              {/* Jenis Website */}
+              <div>
+                <label
+                  htmlFor="website"
+                  className="mb-2 block text-sm font-medium"
+                >
+                  Jenis Website
+                </label>
+
+                <select
+                  id="website"
+                  name="website"
+                  required
+                  defaultValue=""
+                  className="w-full appearance-none rounded-2xl border border-zinc-200 bg-zinc-50 px-5 py-4 text-sm outline-none transition focus:border-violet-500 focus:ring-4 focus:ring-violet-500/10 dark:border-zinc-800 dark:bg-zinc-950"
+                >
+                  <option value="" disabled>
+                    Pilih jenis website
+                  </option>
+
+                  <option value="landing-page">Landing Page</option>
+                  <option value="company-profile">Company Profile</option>
+                  <option value="business-website">Website Bisnis</option>
+                  <option value="portfolio">Portfolio</option>
+                  <option value="ecommerce">E-Commerce</option>
+                  <option value="web-application">Web Application</option>
+                  <option value="other">Lainnya</option>
+                </select>
+              </div>
+
+              {/* Budget */}
+              <div>
+                <label
+                  htmlFor="budget"
+                  className="mb-2 block text-sm font-medium"
+                >
+                  Estimasi Budget
+                </label>
+
+                <select
+                  id="budget"
+                  name="budget"
+                  defaultValue=""
+                  className="w-full appearance-none rounded-2xl border border-zinc-200 bg-zinc-50 px-5 py-4 text-sm outline-none transition focus:border-violet-500 focus:ring-4 focus:ring-violet-500/10 dark:border-zinc-800 dark:bg-zinc-950"
+                >
+                  <option value="" disabled>
+                    Pilih estimasi budget
+                  </option>
+
+                  <option value="under-1m">&lt; Rp1 juta</option>
+                  <option value="1-3m">Rp1–3 juta</option>
+                  <option value="3-5m">Rp3–5 juta</option>
+                  <option value="5-10m">Rp5–10 juta</option>
+                  <option value="above-10m">&gt; Rp10 juta</option>
+                  <option value="discuss">Diskusikan terlebih dahulu</option>
+                </select>
+              </div>
+
+              {/* Message */}
+              <div>
+                <label
+                  htmlFor="message"
+                  className="mb-2 block text-sm font-medium"
+                >
+                  Ceritakan kebutuhan Anda
+                </label>
+
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={5}
+                  required
+                  placeholder="Contoh: Saya membutuhkan website company profile untuk bisnis..."
+                  className="w-full resize-none rounded-2xl border border-zinc-200 bg-zinc-50 px-5 py-4 text-sm outline-none transition placeholder:text-zinc-400 focus:border-violet-500 focus:ring-4 focus:ring-violet-500/10 dark:border-zinc-800 dark:bg-zinc-950 dark:placeholder:text-zinc-600"
+                />
+              </div>
+
+              {/* Submit */}
               <button
                 type="submit"
-                className="flex items-center justify-center gap-2 rounded-2xl bg-violet-600 px-6 py-4 font-semibold text-white transition hover:-translate-y-1 hover:bg-violet-700 hover:shadow-lg hover:shadow-violet-500/20"
+                className="group mt-1 flex items-center justify-center gap-2 rounded-2xl bg-violet-600 px-6 py-4 font-semibold text-white transition hover:-translate-y-1 hover:bg-violet-700 hover:shadow-lg hover:shadow-violet-500/20 active:translate-y-0"
               >
-                Kirim Pesan
-                <Send size={17} />
+                Konsultasi Gratis
+
+                <Send
+                  size={17}
+                  className="transition-transform group-hover:translate-x-1"
+                />
               </button>
+
+              <p className="text-center text-xs text-zinc-500">
+                Tidak ada biaya untuk konsultasi awal.
+              </p>
             </div>
           </motion.form>
         </div>

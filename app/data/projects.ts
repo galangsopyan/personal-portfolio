@@ -16,11 +16,19 @@ export const projects = [
     link: "#",
   },
   {
-    title: "Personal Dashboard",
+    title: "Production Control Dashboard",
     description:
       "Dashboard interaktif untuk mengelola data dan statistik.",
     image: "/projects/projects-3.jpg",
     tags: ["Next.js", "TypeScript", "Charts"],
+    link: "#",
+  },
+  {
+    title: "ClipForge AI — AI-Powered Short Video Generator",
+    description:
+      "Platform untuk membuat video pendek secara otomatis menggunakan AI.",
+    image: "/projects/projects-4.jpg",
+    tags: ["Next.js", "TypeScript", "Tailwind", "AI"],
     link: "#",
   },
 ];

@@ -1,11 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+
 import {
   ArrowDown,
   ArrowUpRight,
+  BrainCircuit,
   Code2,
   Download,
   Mail,
@@ -22,34 +23,22 @@ export default function Hero() {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  const rotateX = useSpring(
-    useTransform(mouseY, [-500, 500], [4, -4]),
-    {
-      stiffness: 120,
-      damping: 20,
-    }
-  );
+  const rotateX = useSpring(useTransform(mouseY, [-500, 500], [4, -4]), {
+    stiffness: 120,
+    damping: 20,
+  });
 
-  const rotateY = useSpring(
-    useTransform(mouseX, [-500, 500], [-4, 4]),
-    {
-      stiffness: 120,
-      damping: 20,
-    }
-  );
+  const rotateY = useSpring(useTransform(mouseX, [-500, 500], [-4, 4]), {
+    stiffness: 120,
+    damping: 20,
+  });
 
-  const handleMouseMove = (
-    event: React.MouseEvent<HTMLDivElement>
-  ) => {
+  const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
     const rect = event.currentTarget.getBoundingClientRect();
 
-    mouseX.set(
-      event.clientX - (rect.left + rect.width / 2)
-    );
+    mouseX.set(event.clientX - (rect.left + rect.width / 2));
 
-    mouseY.set(
-      event.clientY - (rect.top + rect.height / 2)
-    );
+    mouseY.set(event.clientY - (rect.top + rect.height / 2));
   };
 
   const handleMouseLeave = () => {
@@ -78,7 +67,7 @@ export default function Hero() {
         <motion.div
           animate={{
             scale: [1, 1.15, 1],
-            opacity: [0.16, 0.25, 0.16],
+            opacity: [0.12, 0.22, 0.12],
           }}
           transition={{
             duration: 8,
@@ -87,13 +76,13 @@ export default function Hero() {
           }}
           className="
             absolute
-            left-[-10%]
+            left-[-12%]
             top-[5%]
             h-[420px]
             w-[420px]
             rounded-full
             bg-violet-500
-            blur-[130px]
+            blur-[140px]
           "
         />
 
@@ -101,7 +90,7 @@ export default function Hero() {
         <motion.div
           animate={{
             scale: [1, 1.1, 1],
-            opacity: [0.1, 0.18, 0.1],
+            opacity: [0.08, 0.15, 0.08],
           }}
           transition={{
             duration: 10,
@@ -110,8 +99,8 @@ export default function Hero() {
           }}
           className="
             absolute
-            right-[-8%]
-            top-[10%]
+            right-[-10%]
+            top-[15%]
             h-[500px]
             w-[500px]
             rounded-full
@@ -120,32 +109,18 @@ export default function Hero() {
           "
         />
 
-        {/* Bottom violet */}
-        <div
-          className="
-            absolute
-            bottom-[-20%]
-            left-1/2
-            h-[500px]
-            w-[500px]
-            -translate-x-1/2
-            rounded-full
-            bg-fuchsia-500/10
-            blur-[140px]
-          "
-        />
-
         {/* Grid */}
         <div
           className="
             absolute
             inset-0
-            bg-[linear-gradient(to_right,rgba(120,120,120,0.045)_1px,transparent_1px),linear-gradient(to_bottom,rgba(120,120,120,0.045)_1px,transparent_1px)]
-            bg-[size:60px_60px]
+            opacity-60
+            [background-image:linear-gradient(to_right,rgba(120,120,120,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(120,120,120,0.04)_1px,transparent_1px)]
+            [background-size:60px_60px]
           "
         />
 
-        {/* Fade */}
+        {/* Bottom fade */}
         <div
           className="
             absolute
@@ -160,7 +135,7 @@ export default function Hero() {
       </div>
 
       {/* ========================================================
-          MAIN CONTAINER
+          MAIN
       ======================================================== */}
 
       <div
@@ -170,12 +145,12 @@ export default function Hero() {
           min-h-[calc(100vh-8rem)]
           max-w-7xl
           items-center
-          gap-16
+          gap-14
           px-5
           pb-24
           sm:px-8
-          lg:grid-cols-[1.05fr_0.95fr]
-          lg:gap-8
+          lg:grid-cols-[0.92fr_1.08fr]
+          lg:gap-10
           lg:px-10
         "
       >
@@ -202,7 +177,7 @@ export default function Hero() {
             max-w-3xl
           "
         >
-          {/* Greeting */}
+          {/* Availability */}
 
           <motion.div
             initial={{
@@ -225,7 +200,7 @@ export default function Hero() {
               rounded-full
               border
               border-violet-500/20
-              bg-white/60
+              bg-white/70
               px-4
               py-2
               text-xs
@@ -246,17 +221,23 @@ export default function Hero() {
                   w-full
                   animate-ping
                   rounded-full
-                  bg-violet-500
+                  bg-emerald-400
                   opacity-60
                 "
               />
 
-              <span className="relative h-2 w-2 rounded-full bg-violet-500" />
+              <span
+                className="
+                  relative
+                  h-2
+                  w-2
+                  rounded-full
+                  bg-emerald-400
+                "
+              />
             </span>
-
             <Sparkles size={14} />
-
-            Hi, I&apos;m Galang Sopyan
+            Available for opportunities
           </motion.div>
 
           {/* Heading */}
@@ -277,7 +258,7 @@ export default function Hero() {
             className="
               text-5xl
               font-black
-              leading-[0.92]
+              leading-[0.94]
               tracking-[-0.055em]
               text-zinc-950
               sm:text-6xl
@@ -286,8 +267,7 @@ export default function Hero() {
               dark:text-white
             "
           >
-            Building digital
-
+            Building
             <span
               className="
                 block
@@ -299,7 +279,7 @@ export default function Hero() {
                 text-transparent
               "
             >
-              experiences.
+              Digital Solutions.
             </span>
           </motion.h1>
 
@@ -330,7 +310,7 @@ export default function Hero() {
               dark:text-zinc-300
             "
           >
-            <span>I am a</span>
+            <span>I&apos;m a</span>
 
             <span
               className="
@@ -342,7 +322,17 @@ export default function Hero() {
               Full Stack Developer
             </span>
 
-            <span className="text-zinc-400">.</span>
+            <span className="text-zinc-400">&</span>
+
+            <span
+              className="
+                font-bold
+                text-cyan-600
+                dark:text-cyan-400
+              "
+            >
+              AI Builder
+            </span>
           </motion.div>
 
           {/* Description */}
@@ -362,7 +352,7 @@ export default function Hero() {
             }}
             className="
               mt-6
-              max-w-xl
+              max-w-2xl
               text-base
               leading-7
               text-zinc-600
@@ -370,11 +360,53 @@ export default function Hero() {
               dark:text-zinc-400
             "
           >
-            Saya membangun website modern yang cepat,
-            responsif, dan memiliki pengalaman pengguna
-            yang menarik dengan perpaduan teknologi dan
-            desain.
+            Saya membangun website, aplikasi web, dashboard, dan solusi berbasis
+            AI dengan fokus pada performa, pengalaman pengguna, serta desain
+            yang modern dan responsif.
           </motion.p>
+
+          {/* Tech Stack */}
+
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 15,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              delay: 0.55,
+              duration: 0.6,
+            }}
+            className="mt-6 flex flex-wrap gap-2"
+          >
+            {["Next.js", "React", "TypeScript", "Python", "PHP", "FastAPI"].map(
+              (tech) => (
+                <span
+                  key={tech}
+                  className="
+                  rounded-full
+                  border
+                  border-zinc-200
+                  bg-white/60
+                  px-3
+                  py-1.5
+                  text-[11px]
+                  font-medium
+                  text-zinc-600
+                  backdrop-blur-xl
+                  dark:border-zinc-800
+                  dark:bg-zinc-900/50
+                  dark:text-zinc-400
+                "
+                >
+                  {tech}
+                </span>
+              ),
+            )}
+          </motion.div>
 
           {/* CTA */}
 
@@ -388,7 +420,7 @@ export default function Hero() {
               y: 0,
             }}
             transition={{
-              delay: 0.6,
+              delay: 0.65,
               duration: 0.6,
             }}
             className="
@@ -398,10 +430,10 @@ export default function Hero() {
               gap-3
             "
           >
-            {/* Primary */}
+            {/* Projects */}
 
-            <Link
-              href="/projects"
+            <a
+              href="#projects"
               className="
                 group
                 inline-flex
@@ -426,8 +458,7 @@ export default function Hero() {
                 dark:hover:bg-violet-400
               "
             >
-              Lihat Project
-
+              View My Projects
               <ArrowUpRight
                 size={17}
                 className="
@@ -437,12 +468,12 @@ export default function Hero() {
                   group-hover:-translate-y-0.5
                 "
               />
-            </Link>
+            </a>
 
             {/* Contact */}
 
-            <Link
-              href="/contact"
+            <a
+              href="#contact"
               className="
                 inline-flex
                 items-center
@@ -467,9 +498,8 @@ export default function Hero() {
               "
             >
               <Mail size={17} />
-
-              Hubungi Saya
-            </Link>
+              Let&apos;s Talk
+            </a>
 
             {/* CV */}
 
@@ -484,7 +514,7 @@ export default function Hero() {
                 border
                 border-zinc-300
                 bg-transparent
-                px-6
+                px-5
                 py-3.5
                 text-sm
                 font-semibold
@@ -497,8 +527,7 @@ export default function Hero() {
               "
             >
               <Download size={16} />
-
-              CV
+              Download CV
             </a>
           </motion.div>
 
@@ -514,14 +543,14 @@ export default function Hero() {
               y: 0,
             }}
             transition={{
-              delay: 0.75,
+              delay: 0.8,
               duration: 0.7,
             }}
             className="
               mt-12
-              flex
-              flex-wrap
-              gap-8
+              grid
+              max-w-xl
+              grid-cols-3
               border-t
               border-zinc-200
               pt-7
@@ -529,45 +558,47 @@ export default function Hero() {
             "
           >
             <div>
-              <p className="text-2xl font-bold">
-                2+
-              </p>
+              <p className="text-2xl font-black">10+</p>
 
-              <p className="mt-1 text-xs text-zinc-500">
-                Years Experience
-              </p>
+              <p className="mt-1 text-xs text-zinc-500">Projects Built</p>
             </div>
 
-            <div>
-              <p className="text-2xl font-bold">
-                10+
-              </p>
+            <div
+              className="
+                border-l
+                border-zinc-200
+                pl-6
+                dark:border-zinc-800
+              "
+            >
+              <p className="text-2xl font-black">40+</p>
 
-              <p className="mt-1 text-xs text-zinc-500">
-                Projects
-              </p>
+              <p className="mt-1 text-xs text-zinc-500">Technologies</p>
             </div>
 
-            <div>
-              <p className="text-2xl font-bold">
-                100%
-              </p>
+            <div
+              className="
+                border-l
+                border-zinc-200
+                pl-6
+                dark:border-zinc-800
+              "
+            >
+              <p className="text-2xl font-black">AI</p>
 
-              <p className="mt-1 text-xs text-zinc-500">
-                Dedication
-              </p>
+              <p className="mt-1 text-xs text-zinc-500">Focus Area</p>
             </div>
           </motion.div>
         </motion.div>
 
         {/* ======================================================
-            RIGHT — PREMIUM PHOTO
+            RIGHT — 16:9 HERO VISUAL
         ====================================================== */}
 
         <motion.div
           initial={{
             opacity: 0,
-            scale: 0.9,
+            scale: 0.92,
             x: 40,
           }}
           animate={{
@@ -582,21 +613,17 @@ export default function Hero() {
           }}
           className="
             relative
-            mx-auto
             w-full
-            max-w-[500px]
           "
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
         >
-          {/* ==================================================
-              HUGE BACKGROUND GLOW
-          ================================================== */}
+          {/* Main Glow */}
 
           <motion.div
             animate={{
               scale: [1, 1.08, 1],
-              opacity: [0.3, 0.5, 0.3],
+              opacity: [0.2, 0.35, 0.2],
             }}
             transition={{
               duration: 5,
@@ -614,13 +641,10 @@ export default function Hero() {
               rounded-full
               bg-violet-600/30
               blur-[100px]
-              dark:bg-violet-600/20
             "
           />
 
-          {/* ==================================================
-              ROTATING RING
-          ================================================== */}
+          {/* Orbit */}
 
           <motion.div
             animate={{
@@ -632,23 +656,19 @@ export default function Hero() {
               ease: "linear",
             }}
             className="
+              pointer-events-none
               absolute
               left-1/2
               top-1/2
-              h-[88%]
-              w-[88%]
+              h-[105%]
+              w-[105%]
               -translate-x-1/2
               -translate-y-1/2
               rounded-full
               border
-              border-violet-500/20
-              dark:border-violet-400/20
+              border-violet-500/15
             "
           />
-
-          {/* ==================================================
-              SMALL ORBIT
-          ================================================== */}
 
           <motion.div
             animate={{
@@ -660,23 +680,24 @@ export default function Hero() {
               ease: "linear",
             }}
             className="
+              pointer-events-none
               absolute
               left-1/2
               top-1/2
-              h-[100%]
-              w-[100%]
+              h-[115%]
+              w-[115%]
               -translate-x-1/2
               -translate-y-1/2
               rounded-full
               border
               border-dashed
-              border-cyan-400/20
+              border-cyan-400/15
             "
           />
 
-          {/* ==================================================
-              3D PHOTO CONTAINER
-          ================================================== */}
+          {/* ====================================================
+              16:9 IMAGE
+          ==================================================== */}
 
           <motion.div
             style={{
@@ -686,117 +707,91 @@ export default function Hero() {
             className="
               relative
               mx-auto
-              aspect-[4/5]
               w-full
-              max-w-[440px]
+              max-w-[760px]
               [transform-style:preserve-3d]
             "
           >
-            {/* Outer frame */}
+            {/* Image frame */}
 
             <div
               className="
-                absolute
-                inset-3
-                rounded-[42px]
-                bg-gradient-to-br
-                from-violet-500
-                via-indigo-400
-                to-cyan-400
-                p-[1px]
-                shadow-[0_35px_100px_rgba(76,29,149,0.22)]
+                relative
+                aspect-[16/9]
+                w-full
+                overflow-hidden
+                rounded-[28px]
+                border
+                border-white/10
+                bg-zinc-950
+                shadow-[0_35px_100px_rgba(76,29,149,0.25)]
                 dark:shadow-[0_35px_100px_rgba(124,58,237,0.2)]
               "
             >
-              {/* Inner frame */}
+              <Image
+                src="/profile.jpg"
+                alt="Galang Sopyan - Full Stack Developer"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover object-center"
+                priority
+              />
+
+              {/* Dark overlay */}
 
               <div
                 className="
-                  relative
-                  h-full
-                  w-full
-                  overflow-hidden
-                  rounded-[41px]
-                  bg-zinc-100
-                  dark:bg-zinc-900
+                  pointer-events-none
+                  absolute
+                  inset-0
+                  bg-gradient-to-t
+                  from-black/20
+                  via-transparent
+                  to-transparent
                 "
-              >
-                {/* Image */}
+              />
 
-                <Image
-                  src="/profile.jpg"
-                  alt="Galang Sopyan"
-                  fill
-                  priority
-                  sizes="
-                    (max-width: 640px) 90vw,
-                    (max-width: 1024px) 60vw,
-                    440px
-                  "
-                  className="
-                    object-cover
-                    object-top
-                    transition-transform
-                    duration-1000
-                    ease-out
-                    hover:scale-[1.045]
-                  "
-                />
+              {/* Border glow */}
 
-                {/* Dark bottom gradient */}
+              <div
+                className="
+                  pointer-events-none
+                  absolute
+                  inset-0
+                  rounded-[28px]
+                  ring-1
+                  ring-inset
+                  ring-white/10
+                "
+              />
 
-                <div
-                  className="
-                    absolute
-                    inset-0
-                    bg-gradient-to-t
-                    from-zinc-950/50
-                    via-transparent
-                    to-white/5
-                  "
-                />
+              {/* Shine */}
 
-                {/* Violet cinematic glow */}
-
-                <div
-                  className="
-                    absolute
-                    inset-0
-                    bg-gradient-to-br
-                    from-violet-500/10
-                    via-transparent
-                    to-cyan-400/10
-                    mix-blend-screen
-                  "
-                />
-
-                {/* Shine */}
-
-                <motion.div
-                  initial={{
-                    x: "-130%",
-                  }}
-                  animate={{
-                    x: "130%",
-                  }}
-                  transition={{
-                    duration: 5,
-                    repeat: Infinity,
-                    repeatDelay: 5,
-                    ease: "easeInOut",
-                  }}
-                  className="
-                    absolute
-                    inset-y-0
-                    w-1/3
-                    skew-x-[-20deg]
-                    bg-gradient-to-r
-                    from-transparent
-                    via-white/10
-                    to-transparent
-                  "
-                />
-              </div>
+              <motion.div
+                initial={{
+                  x: "-130%",
+                }}
+                animate={{
+                  x: "130%",
+                }}
+                transition={{
+                  duration: 5,
+                  repeat: Infinity,
+                  repeatDelay: 5,
+                  ease: "easeInOut",
+                }}
+                className="
+                  pointer-events-none
+                  absolute
+                  inset-y-0
+                  w-1/3
+                  skew-x-[-20deg]
+                  bg-gradient-to-r
+                  from-transparent
+                  via-white/10
+                  to-transparent
+                "
+              />
             </div>
 
             {/* ==================================================
@@ -815,8 +810,9 @@ export default function Hero() {
               }}
               className="
                 absolute
-                right-[-4px]
-                top-12
+                right-[-8px]
+                top-[12%]
+                z-20
                 flex
                 h-16
                 w-16
@@ -825,24 +821,22 @@ export default function Hero() {
                 rounded-2xl
                 border
                 border-white/10
-                bg-zinc-950/90
-                text-violet-300
+                bg-white/90
+                text-violet-600
                 shadow-2xl
                 backdrop-blur-xl
-                dark:bg-white/90
-                dark:text-violet-600
               "
             >
               <Code2 size={25} />
             </motion.div>
 
             {/* ==================================================
-                AVAILABLE BADGE
+                AI BADGE
             ================================================== */}
 
             <motion.div
               animate={{
-                y: [0, -8, 0],
+                y: [0, 8, 0],
               }}
               transition={{
                 duration: 4,
@@ -851,48 +845,90 @@ export default function Hero() {
               }}
               className="
                 absolute
-                bottom-8
-                left-[-12px]
+                left-[-10px]
+                top-[32%]
+                z-20
+                flex
+                h-14
+                w-14
+                items-center
+                justify-center
                 rounded-2xl
                 border
                 border-white/10
                 bg-zinc-950/90
-                px-5
-                py-4
-                text-white
+                text-cyan-400
                 shadow-2xl
                 backdrop-blur-xl
-                sm:left-[-24px]
+                sm:left-[-20px]
               "
             >
-              <div className="flex items-center gap-2">
-                <span
-                  className="
-                    h-2.5
-                    w-2.5
-                    rounded-full
-                    bg-emerald-400
-                    shadow-[0_0_15px_rgba(52,211,153,0.9)]
-                  "
-                />
-
-                <span className="text-sm font-semibold">
-                  Available for freelance
-                </span>
-              </div>
-
-              <p className="mt-1 pl-[18px] text-xs text-zinc-400">
-                Let&apos;s work together
-              </p>
+              <BrainCircuit size={23} />
             </motion.div>
 
             {/* ==================================================
-                EXPERIENCE BADGE
+                AVAILABLE BADGE
             ================================================== */}
 
             <motion.div
               animate={{
-                y: [0, 7, 0],
+                y: [0, -6, 0],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="
+    absolute
+    bottom-[-18px]
+    left-1/2
+    z-20
+    w-[190px]
+    -translate-x-1/2
+    rounded-xl
+    border
+    border-white/10
+    bg-zinc-950/95
+    px-3.5
+    py-2.5
+    text-white
+    shadow-xl
+    backdrop-blur-xl
+    sm:left-[-10px]
+    sm:w-[180px]
+    sm:translate-x-0
+  "
+            >
+              <div className="flex items-center gap-1.5">
+                <span
+                  className="
+        h-2
+        w-2
+        shrink-0
+        rounded-full
+        bg-emerald-400
+        shadow-[0_0_10px_rgba(52,211,153,0.8)]
+      "
+                />
+
+                <span className="text-[11px] font-semibold">
+                  Available for freelance
+                </span>
+              </div>
+
+              <p className="mt-0.5 pl-3.5 text-[9px] text-zinc-400">
+                Let&apos;s build something great
+              </p>
+            </motion.div>
+
+            {/* ==================================================
+                FULL STACK BADGE
+            ================================================== */}
+
+            <motion.div
+              animate={{
+                y: [0, 5, 0],
               }}
               transition={{
                 duration: 4.5,
@@ -900,48 +936,38 @@ export default function Hero() {
                 ease: "easeInOut",
               }}
               className="
-                absolute
-                bottom-[-18px]
-                right-8
-                hidden
-                rounded-2xl
-                border
-                border-zinc-200/80
-                bg-white/90
-                px-5
-                py-3
-                shadow-xl
-                backdrop-blur-xl
-                sm:block
-                dark:border-zinc-700
-                dark:bg-zinc-900/90
-              "
+    absolute
+    bottom-[-18px]
+    right-0
+    z-20
+    hidden
+    rounded-xl
+    border
+    border-zinc-200/80
+    bg-white/95
+    px-4
+    py-2.5
+    shadow-xl
+    backdrop-blur-xl
+    sm:block
+    dark:border-zinc-700
+    dark:bg-zinc-900/95
+  "
             >
-              <p
-                className="
-                  text-xl
-                  font-black
-                  text-zinc-900
-                  dark:text-white
-                "
-              >
-                2+
-              </p>
+              <p className="text-base font-black leading-tight">Full Stack</p>
 
-              <p className="text-[11px] text-zinc-500">
-                Years Experience
-              </p>
+              <p className="mt-0.5 text-[9px] text-zinc-500">Web Development</p>
             </motion.div>
           </motion.div>
         </motion.div>
       </div>
 
       {/* ========================================================
-          SCROLL INDICATOR
+          SCROLL
       ======================================================== */}
 
       <motion.a
-        href="#preview"
+        href="#about"
         animate={{
           y: [0, 8, 0],
         }}
@@ -964,8 +990,7 @@ export default function Hero() {
           sm:flex
         "
       >
-        Scroll
-
+        Explore
         <ArrowDown size={15} />
       </motion.a>
     </section>
