@@ -1,7 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import {
+  motion,
+  useMotionValue,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 
 import {
   ArrowDown,
@@ -14,31 +19,41 @@ import {
 } from "lucide-react";
 
 export default function Hero() {
-  /*
-   * ============================================================
-   * MOUSE PARALLAX
-   * ============================================================
-   */
+  /* ============================================================
+     MOUSE PARALLAX
+  ============================================================ */
 
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  const rotateX = useSpring(useTransform(mouseY, [-500, 500], [4, -4]), {
-    stiffness: 120,
-    damping: 20,
-  });
+  const rotateX = useSpring(
+    useTransform(mouseY, [-500, 500], [4, -4]),
+    {
+      stiffness: 120,
+      damping: 20,
+    },
+  );
 
-  const rotateY = useSpring(useTransform(mouseX, [-500, 500], [-4, 4]), {
-    stiffness: 120,
-    damping: 20,
-  });
+  const rotateY = useSpring(
+    useTransform(mouseX, [-500, 500], [-4, 4]),
+    {
+      stiffness: 120,
+      damping: 20,
+    },
+  );
 
-  const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseMove = (
+    event: React.MouseEvent<HTMLDivElement>,
+  ) => {
     const rect = event.currentTarget.getBoundingClientRect();
 
-    mouseX.set(event.clientX - (rect.left + rect.width / 2));
+    mouseX.set(
+      event.clientX - (rect.left + rect.width / 2),
+    );
 
-    mouseY.set(event.clientY - (rect.top + rect.height / 2));
+    mouseY.set(
+      event.clientY - (rect.top + rect.height / 2),
+    );
   };
 
   const handleMouseLeave = () => {
@@ -54,8 +69,9 @@ export default function Hero() {
         isolate
         min-h-screen
         overflow-hidden
-        pt-28
-        sm:pt-32
+        pt-24
+        sm:pt-28
+        lg:pt-32
       "
     >
       {/* ========================================================
@@ -64,6 +80,7 @@ export default function Hero() {
 
       <div className="pointer-events-none absolute inset-0 -z-20">
         {/* Violet glow */}
+
         <motion.div
           animate={{
             scale: [1, 1.15, 1],
@@ -76,17 +93,22 @@ export default function Hero() {
           }}
           className="
             absolute
-            left-[-12%]
+            left-[-25%]
             top-[5%]
-            h-[420px]
-            w-[420px]
+            h-[300px]
+            w-[300px]
             rounded-full
             bg-violet-500
-            blur-[140px]
+            blur-[120px]
+            sm:left-[-12%]
+            sm:h-[420px]
+            sm:w-[420px]
+            sm:blur-[140px]
           "
         />
 
         {/* Cyan glow */}
+
         <motion.div
           animate={{
             scale: [1, 1.1, 1],
@@ -99,37 +121,46 @@ export default function Hero() {
           }}
           className="
             absolute
-            right-[-10%]
+            right-[-25%]
             top-[15%]
-            h-[500px]
-            w-[500px]
+            h-[350px]
+            w-[350px]
             rounded-full
             bg-cyan-400
-            blur-[150px]
+            blur-[120px]
+            sm:right-[-10%]
+            sm:h-[500px]
+            sm:w-[500px]
+            sm:blur-[150px]
           "
         />
 
         {/* Grid */}
+
         <div
           className="
             absolute
             inset-0
-            opacity-60
+            opacity-40
+            sm:opacity-60
             [background-image:linear-gradient(to_right,rgba(120,120,120,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(120,120,120,0.04)_1px,transparent_1px)]
-            [background-size:60px_60px]
+            [background-size:50px_50px]
+            sm:[background-size:60px_60px]
           "
         />
 
         {/* Bottom fade */}
+
         <div
           className="
             absolute
             inset-x-0
             bottom-0
-            h-48
+            h-40
             bg-gradient-to-t
             from-[var(--background)]
             to-transparent
+            sm:h-48
           "
         />
       </div>
@@ -142,16 +173,22 @@ export default function Hero() {
         className="
           mx-auto
           grid
-          min-h-[calc(100vh-8rem)]
+          min-h-[calc(100vh-6rem)]
+          w-full
           max-w-7xl
           items-center
-          gap-14
+          gap-12
           px-5
-          pb-24
+          pb-20
+          pt-8
           sm:px-8
+          sm:pt-10
+          lg:min-h-[calc(100vh-8rem)]
           lg:grid-cols-[0.92fr_1.08fr]
           lg:gap-10
           lg:px-10
+          lg:pb-24
+          lg:pt-0
         "
       >
         {/* ======================================================
@@ -174,10 +211,13 @@ export default function Hero() {
           className="
             relative
             z-10
+            w-full
             max-w-3xl
           "
         >
-          {/* Availability */}
+          {/* ==================================================
+              AVAILABILITY
+          ================================================== */}
 
           <motion.div
             initial={{
@@ -193,7 +233,7 @@ export default function Hero() {
               duration: 0.6,
             }}
             className="
-              mb-7
+              mb-6
               inline-flex
               items-center
               gap-2
@@ -201,13 +241,16 @@ export default function Hero() {
               border
               border-violet-500/20
               bg-white/70
-              px-4
+              px-3.5
               py-2
-              text-xs
+              text-[11px]
               font-medium
               text-violet-600
               shadow-sm
               backdrop-blur-xl
+              sm:mb-7
+              sm:px-4
+              sm:text-xs
               dark:bg-zinc-900/60
               dark:text-violet-300
             "
@@ -236,11 +279,15 @@ export default function Hero() {
                 "
               />
             </span>
+
             <Sparkles size={14} />
+
             Available for opportunities
           </motion.div>
 
-          {/* Heading */}
+          {/* ==================================================
+              HEADING
+          ================================================== */}
 
           <motion.h1
             initial={{
@@ -256,7 +303,8 @@ export default function Hero() {
               duration: 0.8,
             }}
             className="
-              text-5xl
+              max-w-[900px]
+              text-[clamp(2.75rem,12vw,4rem)]
               font-black
               leading-[0.94]
               tracking-[-0.055em]
@@ -268,6 +316,7 @@ export default function Hero() {
             "
           >
             Building
+
             <span
               className="
                 block
@@ -283,7 +332,9 @@ export default function Hero() {
             </span>
           </motion.h1>
 
-          {/* Role */}
+          {/* ==================================================
+              ROLE
+          ================================================== */}
 
           <motion.div
             initial={{
@@ -299,14 +350,18 @@ export default function Hero() {
               duration: 0.6,
             }}
             className="
-              mt-7
+              mt-6
               flex
               flex-wrap
               items-center
-              gap-2
-              text-lg
+              gap-x-2
+              gap-y-1
+              text-base
               font-medium
+              leading-7
               text-zinc-600
+              sm:mt-7
+              sm:text-lg
               dark:text-zinc-300
             "
           >
@@ -322,7 +377,9 @@ export default function Hero() {
               Full Stack Developer
             </span>
 
-            <span className="text-zinc-400">&</span>
+            <span className="text-zinc-400">
+              &
+            </span>
 
             <span
               className="
@@ -335,7 +392,9 @@ export default function Hero() {
             </span>
           </motion.div>
 
-          {/* Description */}
+          {/* ==================================================
+              DESCRIPTION
+          ================================================== */}
 
           <motion.p
             initial={{
@@ -351,21 +410,25 @@ export default function Hero() {
               duration: 0.6,
             }}
             className="
-              mt-6
+              mt-5
               max-w-2xl
-              text-base
+              text-[15px]
               leading-7
               text-zinc-600
+              sm:mt-6
               sm:text-lg
               dark:text-zinc-400
             "
           >
-            Saya membangun website, aplikasi web, dashboard, dan solusi berbasis
-            AI dengan fokus pada performa, pengalaman pengguna, serta desain
-            yang modern dan responsif.
+            Saya membangun website, aplikasi web,
+            dashboard, dan solusi berbasis AI dengan
+            fokus pada performa, pengalaman pengguna,
+            serta desain yang modern dan responsif.
           </motion.p>
 
-          {/* Tech Stack */}
+          {/* ==================================================
+              TECH STACK
+          ================================================== */}
 
           <motion.div
             initial={{
@@ -380,20 +443,31 @@ export default function Hero() {
               delay: 0.55,
               duration: 0.6,
             }}
-            className="mt-6 flex flex-wrap gap-2"
+            className="
+              mt-6
+              flex
+              flex-wrap
+              gap-2
+            "
           >
-            {["Next.js", "React", "TypeScript", "Python", "PHP", "FastAPI"].map(
-              (tech) => (
-                <span
-                  key={tech}
-                  className="
+            {[
+              "Next.js",
+              "React",
+              "TypeScript",
+              "Python",
+              "PHP",
+              "FastAPI",
+            ].map((tech) => (
+              <span
+                key={tech}
+                className="
                   rounded-full
                   border
                   border-zinc-200
                   bg-white/60
                   px-3
                   py-1.5
-                  text-[11px]
+                  text-xs
                   font-medium
                   text-zinc-600
                   backdrop-blur-xl
@@ -401,14 +475,15 @@ export default function Hero() {
                   dark:bg-zinc-900/50
                   dark:text-zinc-400
                 "
-                >
-                  {tech}
-                </span>
-              ),
-            )}
+              >
+                {tech}
+              </span>
+            ))}
           </motion.div>
 
-          {/* CTA */}
+          {/* ==================================================
+              CTA
+          ================================================== */}
 
           <motion.div
             initial={{
@@ -425,9 +500,11 @@ export default function Hero() {
             }}
             className="
               mt-8
-              flex
-              flex-wrap
+              grid
+              grid-cols-1
               gap-3
+              sm:flex
+              sm:flex-wrap
             "
           >
             {/* Projects */}
@@ -437,7 +514,9 @@ export default function Hero() {
               className="
                 group
                 inline-flex
+                w-full
                 items-center
+                justify-center
                 gap-2
                 rounded-full
                 bg-zinc-950
@@ -453,12 +532,14 @@ export default function Hero() {
                 hover:-translate-y-1
                 hover:bg-violet-600
                 hover:shadow-violet-500/30
+                sm:w-auto
                 dark:bg-white
                 dark:text-zinc-950
                 dark:hover:bg-violet-400
               "
             >
               View My Projects
+
               <ArrowUpRight
                 size={17}
                 className="
@@ -476,7 +557,9 @@ export default function Hero() {
               href="#contact"
               className="
                 inline-flex
+                w-full
                 items-center
+                justify-center
                 gap-2
                 rounded-full
                 border
@@ -492,12 +575,14 @@ export default function Hero() {
                 hover:-translate-y-1
                 hover:border-violet-400
                 hover:text-violet-600
+                sm:w-auto
                 dark:border-zinc-700
                 dark:bg-zinc-900/50
                 dark:hover:border-violet-500
               "
             >
               <Mail size={17} />
+
               Let&apos;s Talk
             </a>
 
@@ -508,7 +593,9 @@ export default function Hero() {
               download
               className="
                 inline-flex
+                w-full
                 items-center
+                justify-center
                 gap-2
                 rounded-full
                 border
@@ -523,15 +610,19 @@ export default function Hero() {
                 hover:-translate-y-1
                 hover:border-violet-400
                 hover:text-violet-600
+                sm:w-auto
                 dark:border-zinc-700
               "
             >
               <Download size={16} />
+
               Download CV
             </a>
           </motion.div>
 
-          {/* Stats */}
+          {/* ==================================================
+              STATS
+          ================================================== */}
 
           <motion.div
             initial={{
@@ -547,52 +638,113 @@ export default function Hero() {
               duration: 0.7,
             }}
             className="
-              mt-12
+              mt-10
               grid
               max-w-xl
               grid-cols-3
               border-t
               border-zinc-200
-              pt-7
+              pt-6
+              sm:mt-12
+              sm:pt-7
               dark:border-zinc-800
             "
           >
+            {/* Stat 1 */}
+
             <div>
-              <p className="text-2xl font-black">10+</p>
+              <p
+                className="
+                  text-xl
+                  font-black
+                  sm:text-2xl
+                "
+              >
+                10+
+              </p>
 
-              <p className="mt-1 text-xs text-zinc-500">Projects Built</p>
+              <p
+                className="
+                  mt-1
+                  text-[10px]
+                  text-zinc-500
+                  sm:text-xs
+                "
+              >
+                Projects Built
+              </p>
             </div>
+
+            {/* Stat 2 */}
 
             <div
               className="
                 border-l
                 border-zinc-200
-                pl-6
+                pl-3
+                sm:pl-6
                 dark:border-zinc-800
               "
             >
-              <p className="text-2xl font-black">40+</p>
+              <p
+                className="
+                  text-xl
+                  font-black
+                  sm:text-2xl
+                "
+              >
+                40+
+              </p>
 
-              <p className="mt-1 text-xs text-zinc-500">Technologies</p>
+              <p
+                className="
+                  mt-1
+                  text-[10px]
+                  text-zinc-500
+                  sm:text-xs
+                "
+              >
+                Technologies
+              </p>
             </div>
+
+            {/* Stat 3 */}
 
             <div
               className="
                 border-l
                 border-zinc-200
-                pl-6
+                pl-3
+                sm:pl-6
                 dark:border-zinc-800
               "
             >
-              <p className="text-2xl font-black">AI</p>
+              <p
+                className="
+                  text-xl
+                  font-black
+                  sm:text-2xl
+                "
+              >
+                AI
+              </p>
 
-              <p className="mt-1 text-xs text-zinc-500">Focus Area</p>
+              <p
+                className="
+                  mt-1
+                  text-[10px]
+                  text-zinc-500
+                  sm:text-xs
+                "
+              >
+                Focus Area
+              </p>
             </div>
           </motion.div>
         </motion.div>
 
         {/* ======================================================
-            RIGHT — 16:9 HERO VISUAL
+            RIGHT — HERO VISUAL
         ====================================================== */}
 
         <motion.div
@@ -614,11 +766,15 @@ export default function Hero() {
           className="
             relative
             w-full
+            px-1
+            sm:px-0
           "
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
         >
-          {/* Main Glow */}
+          {/* ==================================================
+              MAIN GLOW
+          ================================================== */}
 
           <motion.div
             animate={{
@@ -640,11 +796,14 @@ export default function Hero() {
               -translate-y-1/2
               rounded-full
               bg-violet-600/30
-              blur-[100px]
+              blur-[80px]
+              sm:blur-[100px]
             "
           />
 
-          {/* Orbit */}
+          {/* ==================================================
+              ORBIT 1
+          ================================================== */}
 
           <motion.div
             animate={{
@@ -660,6 +819,7 @@ export default function Hero() {
               absolute
               left-1/2
               top-1/2
+              hidden
               h-[105%]
               w-[105%]
               -translate-x-1/2
@@ -667,8 +827,13 @@ export default function Hero() {
               rounded-full
               border
               border-violet-500/15
+              sm:block
             "
           />
+
+          {/* ==================================================
+              ORBIT 2
+          ================================================== */}
 
           <motion.div
             animate={{
@@ -684,6 +849,7 @@ export default function Hero() {
               absolute
               left-1/2
               top-1/2
+              hidden
               h-[115%]
               w-[115%]
               -translate-x-1/2
@@ -692,12 +858,13 @@ export default function Hero() {
               border
               border-dashed
               border-cyan-400/15
+              sm:block
             "
           />
 
-          {/* ====================================================
-              16:9 IMAGE
-          ==================================================== */}
+          {/* ==================================================
+              IMAGE + BADGES
+          ================================================== */}
 
           <motion.div
             style={{
@@ -712,7 +879,9 @@ export default function Hero() {
               [transform-style:preserve-3d]
             "
           >
-            {/* Image frame */}
+            {/* ==================================================
+                IMAGE FRAME
+            ================================================== */}
 
             <div
               className="
@@ -720,20 +889,26 @@ export default function Hero() {
                 aspect-[16/9]
                 w-full
                 overflow-hidden
-                rounded-[28px]
+                rounded-[22px]
                 border
                 border-white/10
                 bg-zinc-950
-                shadow-[0_35px_100px_rgba(76,29,149,0.25)]
-                dark:shadow-[0_35px_100px_rgba(124,58,237,0.2)]
+                shadow-[0_25px_70px_rgba(76,29,149,0.25)]
+                sm:rounded-[28px]
+                sm:shadow-[0_35px_100px_rgba(76,29,149,0.25)]
+                dark:shadow-[0_25px_70px_rgba(124,58,237,0.2)]
+                sm:dark:shadow-[0_35px_100px_rgba(124,58,237,0.2)]
               "
             >
               <Image
                 src="/profile.jpg"
                 alt="Galang Sopyan - Full Stack Developer"
                 fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover object-center"
+                sizes="(max-width: 640px) 94vw,(max-width: 768px) 90vw,50vw"
+                className="
+                  object-cover
+                  object-center
+                "
                 priority
               />
 
@@ -758,10 +933,11 @@ export default function Hero() {
                   pointer-events-none
                   absolute
                   inset-0
-                  rounded-[28px]
+                  rounded-[22px]
                   ring-1
                   ring-inset
                   ring-white/10
+                  sm:rounded-[28px]
                 "
               />
 
@@ -810,24 +986,37 @@ export default function Hero() {
               }}
               className="
                 absolute
-                right-[-8px]
-                top-[12%]
+                right-2
+                top-[8%]
                 z-20
                 flex
-                h-16
-                w-16
+                h-12
+                w-12
                 items-center
                 justify-center
-                rounded-2xl
+                rounded-xl
                 border
                 border-white/10
                 bg-white/90
                 text-violet-600
                 shadow-2xl
                 backdrop-blur-xl
+                sm:right-[-8px]
+                sm:top-[12%]
+                sm:h-16
+                sm:w-16
+                sm:rounded-2xl
               "
             >
-              <Code2 size={25} />
+              <Code2
+                size={21}
+                className="sm:hidden"
+              />
+
+              <Code2
+                size={25}
+                className="hidden sm:block"
+              />
             </motion.div>
 
             {/* ==================================================
@@ -845,15 +1034,15 @@ export default function Hero() {
               }}
               className="
                 absolute
-                left-[-10px]
-                top-[32%]
+                left-2
+                top-[30%]
                 z-20
                 flex
-                h-14
-                w-14
+                h-11
+                w-11
                 items-center
                 justify-center
-                rounded-2xl
+                rounded-xl
                 border
                 border-white/10
                 bg-zinc-950/90
@@ -861,9 +1050,21 @@ export default function Hero() {
                 shadow-2xl
                 backdrop-blur-xl
                 sm:left-[-20px]
+                sm:top-[32%]
+                sm:h-14
+                sm:w-14
+                sm:rounded-2xl
               "
             >
-              <BrainCircuit size={23} />
+              <BrainCircuit
+                size={20}
+                className="sm:hidden"
+              />
+
+              <BrainCircuit
+                size={23}
+                className="hidden sm:block"
+              />
             </motion.div>
 
             {/* ==================================================
@@ -880,44 +1081,57 @@ export default function Hero() {
                 ease: "easeInOut",
               }}
               className="
-    absolute
-    bottom-[-18px]
-    left-1/2
-    z-20
-    w-[190px]
-    -translate-x-1/2
-    rounded-xl
-    border
-    border-white/10
-    bg-zinc-950/95
-    px-3.5
-    py-2.5
-    text-white
-    shadow-xl
-    backdrop-blur-xl
-    sm:left-[-10px]
-    sm:w-[180px]
-    sm:translate-x-0
-  "
+                absolute
+                bottom-[-14px]
+                left-1/2
+                z-20
+                w-[185px]
+                -translate-x-1/2
+                rounded-xl
+                border
+                border-white/10
+                bg-zinc-950/95
+                px-3.5
+                py-2.5
+                text-white
+                shadow-xl
+                backdrop-blur-xl
+                sm:bottom-[-18px]
+                sm:left-[-10px]
+                sm:w-[180px]
+                sm:translate-x-0
+              "
             >
               <div className="flex items-center gap-1.5">
                 <span
                   className="
-        h-2
-        w-2
-        shrink-0
-        rounded-full
-        bg-emerald-400
-        shadow-[0_0_10px_rgba(52,211,153,0.8)]
-      "
+                    h-2
+                    w-2
+                    shrink-0
+                    rounded-full
+                    bg-emerald-400
+                    shadow-[0_0_10px_rgba(52,211,153,0.8)]
+                  "
                 />
 
-                <span className="text-[11px] font-semibold">
+                <span
+                  className="
+                    text-[11px]
+                    font-semibold
+                  "
+                >
                   Available for freelance
                 </span>
               </div>
 
-              <p className="mt-0.5 pl-3.5 text-[9px] text-zinc-400">
+              <p
+                className="
+                  mt-0.5
+                  pl-3.5
+                  text-[9px]
+                  text-zinc-400
+                "
+              >
                 Let&apos;s build something great
               </p>
             </motion.div>
@@ -936,34 +1150,50 @@ export default function Hero() {
                 ease: "easeInOut",
               }}
               className="
-    absolute
-    bottom-[-18px]
-    right-0
-    z-20
-    hidden
-    rounded-xl
-    border
-    border-zinc-200/80
-    bg-white/95
-    px-4
-    py-2.5
-    shadow-xl
-    backdrop-blur-xl
-    sm:block
-    dark:border-zinc-700
-    dark:bg-zinc-900/95
-  "
+                absolute
+                bottom-[-18px]
+                right-0
+                z-20
+                hidden
+                rounded-xl
+                border
+                border-zinc-200/80
+                bg-white/95
+                px-4
+                py-2.5
+                shadow-xl
+                backdrop-blur-xl
+                sm:block
+                dark:border-zinc-700
+                dark:bg-zinc-900/95
+              "
             >
-              <p className="text-base font-black leading-tight">Full Stack</p>
+              <p
+                className="
+                  text-base
+                  font-black
+                  leading-tight
+                "
+              >
+                Full Stack
+              </p>
 
-              <p className="mt-0.5 text-[9px] text-zinc-500">Web Development</p>
+              <p
+                className="
+                  mt-0.5
+                  text-[9px]
+                  text-zinc-500
+                "
+              >
+                Web Development
+              </p>
             </motion.div>
           </motion.div>
         </motion.div>
       </div>
 
       {/* ========================================================
-          SCROLL
+          SCROLL INDICATOR
       ======================================================== */}
 
       <motion.a
@@ -991,6 +1221,7 @@ export default function Hero() {
         "
       >
         Explore
+
         <ArrowDown size={15} />
       </motion.a>
     </section>
