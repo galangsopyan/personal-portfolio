@@ -12,10 +12,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  width: 1280,
+  width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
 };
 
 export default function RootLayout({
@@ -32,11 +30,9 @@ export default function RootLayout({
           enableSystem={false}
           disableTransitionOnChange
         >
-         
-            <Navbar />
-            {children}
-            <Footer />
-          
+          <Navbar />
+          {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
