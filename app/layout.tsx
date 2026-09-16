@@ -6,9 +6,9 @@ import Footer from "./components/Footer";
 import ThemeProvider from "./components/ThemeProvider";
 
 export const metadata: Metadata = {
-  title: "Galang Sopyan — Portfolio",
+  title: "Galang Sopyan — Full Stack Developer",
   description:
-    "Personal portfolio of Galang Sopyan.",
+    "Portfolio Galang Sopyan — Full Stack Developer, AI Builder, and Web Developer.",
 };
 
 export default function RootLayout({

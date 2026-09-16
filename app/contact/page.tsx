@@ -10,6 +10,96 @@ import {
 } from "lucide-react";
 
 export default function ContactPage() {
+  /**
+   * Submit form → WhatsApp
+   */
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+
+    const name = String(formData.get("name") || "").trim();
+    const email = String(formData.get("email") || "").trim();
+    const whatsapp = String(formData.get("whatsapp") || "").trim();
+    const website = String(formData.get("website") || "").trim();
+    const budget = String(formData.get("budget") || "").trim();
+    const message = String(formData.get("message") || "").trim();
+
+    /**
+     * Konversi value select menjadi teks yang lebih rapi
+     */
+    const websiteLabels: Record<string, string> = {
+      "landing-page": "Landing Page",
+      "company-profile": "Company Profile",
+      "business-website": "Website Bisnis",
+      portfolio: "Portfolio",
+      ecommerce: "E-Commerce",
+      "web-application": "Web Application",
+      other: "Lainnya",
+    };
+
+    const budgetLabels: Record<string, string> = {
+      "under-1m": "< Rp1 juta",
+      "1-3m": "Rp1–3 juta",
+      "3-5m": "Rp3–5 juta",
+      "5-10m": "Rp5–10 juta",
+      "above-10m": "> Rp10 juta",
+      discuss: "Diskusikan terlebih dahulu",
+    };
+
+    const websiteName = websiteLabels[website] || "-";
+    const budgetName = budgetLabels[budget] || "Belum ditentukan";
+
+    /**
+     * Pesan WhatsApp
+     */
+    const whatsappMessage = `Halo Galang 👋
+
+Saya tertarik untuk berkonsultasi mengenai pembuatan website.
+
+*DATA CALON KLIEN*
+━━━━━━━━━━━━━━━━━━
+Nama: ${name}
+Email: ${email}
+WhatsApp: ${whatsapp || "-"}
+
+*DETAIL PROJECT*
+━━━━━━━━━━━━━━━━━━
+Jenis Website: ${websiteName}
+Estimasi Budget: ${budgetName}
+
+*KEBUTUHAN PROJECT*
+━━━━━━━━━━━━━━━━━━
+${message}
+
+Saya mengetahui jasa Anda dari portfolio website.
+
+Terima kasih 🙏`;
+
+    /**
+     * Nomor WhatsApp tujuan
+     *
+     * Format:
+     * 628xxxxxxxxxx
+     *
+     * Tanpa +, spasi, atau 0 di depan.
+     */
+    const phoneNumber = "6285766724430";
+
+    /**
+     * Encode pesan agar aman dimasukkan
+     * ke URL WhatsApp
+     */
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+      whatsappMessage
+    )}`;
+
+    /**
+     * Buka WhatsApp
+     */
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+  };
+
   return (
     <main className="min-h-screen pt-32">
       <section className="mx-auto max-w-6xl px-5 py-20">
@@ -113,6 +203,7 @@ export default function ContactPage() {
 
           {/* ================= CONTACT FORM ================= */}
           <motion.form
+            onSubmit={handleSubmit}
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.15 }}
@@ -129,8 +220,8 @@ export default function ContactPage() {
               </p>
             </div>
 
-            <div className="grid gap-5">
-              {/* Nama */}
+            <section className="grid gap-5">
+              {/* ================= NAMA ================= */}
               <div>
                 <label
                   htmlFor="name"
@@ -150,7 +241,7 @@ export default function ContactPage() {
                 />
               </div>
 
-              {/* Email */}
+              {/* ================= EMAIL ================= */}
               <div>
                 <label
                   htmlFor="email"
@@ -170,7 +261,7 @@ export default function ContactPage() {
                 />
               </div>
 
-              {/* WhatsApp */}
+              {/* ================= WHATSAPP ================= */}
               <div>
                 <label
                   htmlFor="whatsapp"
@@ -189,7 +280,7 @@ export default function ContactPage() {
                 />
               </div>
 
-              {/* Jenis Website */}
+              {/* ================= JENIS WEBSITE ================= */}
               <div>
                 <label
                   htmlFor="website"
@@ -219,7 +310,7 @@ export default function ContactPage() {
                 </select>
               </div>
 
-              {/* Budget */}
+              {/* ================= BUDGET ================= */}
               <div>
                 <label
                   htmlFor="budget"
@@ -247,7 +338,7 @@ export default function ContactPage() {
                 </select>
               </div>
 
-              {/* Message */}
+              {/* ================= MESSAGE ================= */}
               <div>
                 <label
                   htmlFor="message"
@@ -266,12 +357,17 @@ export default function ContactPage() {
                 />
               </div>
 
-              {/* Submit */}
+              {/* ================= SUBMIT ================= */}
               <button
                 type="submit"
                 className="group mt-1 flex items-center justify-center gap-2 rounded-2xl bg-violet-600 px-6 py-4 font-semibold text-white transition hover:-translate-y-1 hover:bg-violet-700 hover:shadow-lg hover:shadow-violet-500/20 active:translate-y-0"
               >
-                Konsultasi Gratis
+                <MessageCircle
+                  size={18}
+                  className="transition-transform group-hover:scale-110"
+                />
+
+                Konsultasi via WhatsApp
 
                 <Send
                   size={17}
@@ -282,7 +378,7 @@ export default function ContactPage() {
               <p className="text-center text-xs text-zinc-500">
                 Tidak ada biaya untuk konsultasi awal.
               </p>
-            </div>
+            </section>
           </motion.form>
         </div>
       </section>

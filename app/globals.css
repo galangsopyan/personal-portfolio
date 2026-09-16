@@ -14,11 +14,23 @@
 :root {
   --background: #fafafa;
   --foreground: #18181b;
+
+  --muted: #71717a;
+  --border: #e4e4e7;
+
+  --accent: #7c3aed;
+  --accent-soft: rgba(124, 58, 237, 0.08);
 }
 
 .dark {
   --background: #09090b;
   --foreground: #f4f4f5;
+
+  --muted: #a1a1aa;
+  --border: #27272a;
+
+  --accent: #a78bfa;
+  --accent-soft: rgba(167, 139, 250, 0.1);
 }
 
 
@@ -32,6 +44,11 @@
 
 html {
   scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
 }
 
 body {
@@ -48,6 +65,8 @@ body {
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  text-rendering: optimizeLegibility;
 }
 
 
@@ -56,8 +75,8 @@ body {
    ========================================================= */
 
 ::selection {
-  background: #7c3aed;
-  color: white;
+  background: rgba(124, 58, 237, 0.16);
+  color: inherit;
 }
 
 
@@ -66,7 +85,7 @@ body {
    ========================================================= */
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 7px;
 }
 
 ::-webkit-scrollbar-track {
@@ -74,163 +93,34 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #71717a;
+  background: #d4d4d8;
   border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
+  background: #a1a1aa;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #3f3f46;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
   background: #52525b;
 }
 
 
 /* =========================================================
-   GRADIENT TEXT
-   ========================================================= */
-
-.gradient-text {
-  background: linear-gradient(
-    90deg,
-    #7c3aed,
-    #06b6d4,
-    #8b5cf6
-  );
-
-  -webkit-background-clip: text;
-  background-clip: text;
-
-  color: transparent;
-}
-
-
-/* =========================================================
-   MESH BACKGROUND - LIGHT
-   ========================================================= */
-
-.mesh-background {
-  background:
-    radial-gradient(
-      circle at 20% 20%,
-      rgba(124, 58, 237, 0.16),
-      transparent 35%
-    ),
-    radial-gradient(
-      circle at 80% 30%,
-      rgba(6, 182, 212, 0.12),
-      transparent 35%
-    ),
-    radial-gradient(
-      circle at 50% 80%,
-      rgba(139, 92, 246, 0.1),
-      transparent 40%
-    );
-}
-
-
-/* =========================================================
-   MESH BACKGROUND - DARK
-   ========================================================= */
-
-.dark .mesh-background {
-  background:
-    radial-gradient(
-      circle at 20% 20%,
-      rgba(124, 58, 237, 0.25),
-      transparent 35%
-    ),
-    radial-gradient(
-      circle at 80% 30%,
-      rgba(6, 182, 212, 0.18),
-      transparent 35%
-    ),
-    radial-gradient(
-      circle at 50% 80%,
-      rgba(139, 92, 246, 0.15),
-      transparent 40%
-    );
-}
-
-
-/* =========================================================
-   PREMIUM GRID BACKGROUND
-   ========================================================= */
-
-.grid-background {
-  background-image:
-    linear-gradient(
-      rgba(113, 113, 122, 0.08) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(113, 113, 122, 0.08) 1px,
-      transparent 1px
-    );
-
-  background-size: 60px 60px;
-}
-
-
-/* =========================================================
-   DARK GRID
-   ========================================================= */
-
-.dark .grid-background {
-  background-image:
-    linear-gradient(
-      rgba(255, 255, 255, 0.035) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.035) 1px,
-      transparent 1px
-    );
-}
-
-
-/* =========================================================
-   PREMIUM GLOW
-   ========================================================= */
-
-.premium-glow {
-  box-shadow:
-    0 0 0 1px rgba(139, 92, 246, 0.08),
-    0 20px 60px rgba(139, 92, 246, 0.08);
-}
-
-.dark .premium-glow {
-  box-shadow:
-    0 0 0 1px rgba(139, 92, 246, 0.15),
-    0 20px 70px rgba(139, 92, 246, 0.12);
-}
-
-
-/* =========================================================
-   GLASS EFFECT
-   ========================================================= */
-
-.glass {
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(228, 228, 231, 0.8);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-}
-
-.dark .glass {
-  background: rgba(9, 9, 11, 0.7);
-  border-color: rgba(63, 63, 70, 0.7);
-}
-
-
-/* =========================================================
-   CONTAINER
+   PREMIUM CONTAINER
    ========================================================= */
 
 .container-premium {
   width: 100%;
   max-width: 1280px;
+
   margin-left: auto;
   margin-right: auto;
+
   padding-left: 20px;
   padding-right: 20px;
 }
@@ -251,14 +141,267 @@ body {
 
 
 /* =========================================================
+   CLEAN PREMIUM GRID
+   ========================================================= */
+
+.grid-background {
+  background-image:
+    linear-gradient(
+      to right,
+      rgba(24, 24, 27, 0.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(24, 24, 27, 0.035) 1px,
+      transparent 1px
+    );
+
+  background-size: 48px 48px;
+}
+
+.dark .grid-background {
+  background-image:
+    linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    );
+}
+
+
+/* =========================================================
+   SOFT BACKGROUND
+   ========================================================= */
+
+.mesh-background {
+  position: relative;
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(124, 58, 237, 0.055),
+      transparent 35%
+    );
+}
+
+.dark .mesh-background {
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(139, 92, 246, 0.08),
+      transparent 38%
+    );
+}
+
+
+/* =========================================================
+   PREMIUM GLASS
+   ========================================================= */
+
+.glass {
+  background: rgba(255, 255, 255, 0.78);
+
+  border: 1px solid rgba(228, 228, 231, 0.85);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.dark .glass {
+  background: rgba(9, 9, 11, 0.78);
+
+  border-color: rgba(63, 63, 70, 0.7);
+}
+
+
+/* =========================================================
+   PREMIUM CARD
+   ========================================================= */
+
+.premium-card {
+  background: #ffffff;
+
+  border: 1px solid #e4e4e7;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.02),
+    0 8px 30px rgba(0, 0, 0, 0.035);
+
+  transition:
+    transform 300ms ease,
+    box-shadow 300ms ease,
+    border-color 300ms ease;
+}
+
+.premium-card:hover {
+  transform: translateY(-3px);
+
+  border-color: #d4d4d8;
+
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.02),
+    0 16px 40px rgba(0, 0, 0, 0.06);
+}
+
+.dark .premium-card {
+  background: #111113;
+  border-color: #27272a;
+
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.2),
+    0 12px 35px rgba(0, 0, 0, 0.18);
+}
+
+.dark .premium-card:hover {
+  border-color: #3f3f46;
+
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.2),
+    0 18px 45px rgba(0, 0, 0, 0.28);
+}
+
+
+/* =========================================================
+   GRADIENT TEXT
+   ========================================================= */
+
+.gradient-text {
+  background:
+    linear-gradient(
+      135deg,
+      #18181b 0%,
+      #52525b 100%
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+}
+
+.dark .gradient-text {
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff 0%,
+      #a1a1aa 100%
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+}
+
+
+/* =========================================================
+   SUBTLE ACCENT
+   ========================================================= */
+
+.accent {
+  color: #7c3aed;
+}
+
+.dark .accent {
+  color: #a78bfa;
+}
+
+.accent-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 999px;
+
+  background: #7c3aed;
+
+  box-shadow:
+    0 0 0 4px rgba(124, 58, 237, 0.08);
+}
+
+.dark .accent-dot {
+  background: #a78bfa;
+
+  box-shadow:
+    0 0 0 4px rgba(167, 139, 250, 0.1);
+}
+
+
+/* =========================================================
+   PREMIUM GLOW — VERY SUBTLE
+   ========================================================= */
+
+.premium-glow {
+  box-shadow:
+    0 0 0 1px rgba(124, 58, 237, 0.05),
+    0 20px 50px rgba(124, 58, 237, 0.05);
+}
+
+.dark .premium-glow {
+  box-shadow:
+    0 0 0 1px rgba(167, 139, 250, 0.08),
+    0 20px 60px rgba(124, 58, 237, 0.08);
+}
+
+
+/* =========================================================
+   SECTION
+   ========================================================= */
+
+.section-padding {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding-top: 72px;
+    padding-bottom: 72px;
+  }
+}
+
+
+/* =========================================================
+   SECTION LABEL
+   ========================================================= */
+
+.section-label {
+  display: inline-flex;
+
+  align-items: center;
+  gap: 8px;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+
+  color: #71717a;
+}
+
+.dark .section-label {
+  color: #a1a1aa;
+}
+
+
+/* =========================================================
    FOCUS
    ========================================================= */
 
 button:focus-visible,
 a:focus-visible,
 input:focus-visible,
-textarea:focus-visible {
-  outline: 2px solid #8b5cf6;
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid rgba(124, 58, 237, 0.5);
   outline-offset: 3px;
 }
 
@@ -273,13 +416,27 @@ img {
 
 
 /* =========================================================
-   SMOOTH THEME TRANSITION
+   INPUT
    ========================================================= */
 
-html {
-  color-scheme: light;
+input,
+textarea,
+select {
+  font: inherit;
 }
 
-html.dark {
-  color-scheme: dark;
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
