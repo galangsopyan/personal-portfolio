@@ -6,9 +6,8 @@ import Footer from "./components/Footer";
 import ThemeProvider from "./components/ThemeProvider";
 
 export const metadata: Metadata = {
-  title: "Galang Sopyan — Full Stack Developer",
-  description:
-    "Portfolio Galang Sopyan — Full Stack Developer, AI Builder, and Web Developer.",
+  title: "Galang Sopyan — Portfolio",
+  description: "Personal portfolio of Galang Sopyan.",
 };
 
 export default function RootLayout({
@@ -19,12 +18,16 @@ export default function RootLayout({
   return (
     <html lang="id" suppressHydrationWarning>
       <body>
-        <ThemeProvider>
-          <Navbar />
-
-          {children}
-
-          <Footer />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem={false}
+          disableTransitionOnChange
+        >
+            <Navbar />
+            {children}
+            <Footer />
+         
         </ThemeProvider>
       </body>
     </html>
