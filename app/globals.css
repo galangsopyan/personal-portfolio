@@ -6,7 +6,6 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-
 /* =========================================================
    ROOT VARIABLES
 ========================================================= */
@@ -33,7 +32,6 @@
   --accent-soft: rgba(167, 139, 250, 0.1);
 }
 
-
 /* =========================================================
    RESET
 ========================================================= */
@@ -45,12 +43,7 @@
 html {
   scroll-behavior: smooth;
   color-scheme: light;
-
-  /*
-   * Mempertahankan canvas desktop ketika dibuka
-   * pada layar yang lebih kecil.
-   */
-  min-width: 1280px;
+  overflow-x: hidden;
 }
 
 html.dark {
@@ -59,13 +52,8 @@ html.dark {
 
 body {
   margin: 0;
-
-  /*
-   * Jangan biarkan layout mengecil menjadi
-   * layout mobile.
-   */
-  min-width: 1280px;
   min-height: 100vh;
+  width: 100%;
 
   background: var(--background);
   color: var(--foreground);
@@ -80,13 +68,36 @@ body {
 
   text-rendering: optimizeLegibility;
 
-  /*
-   * Jika layar lebih kecil dari 1280px,
-   * browser menyediakan horizontal scrolling.
-   */
-  overflow-x: auto;
+  overflow-x: hidden;
 }
 
+/* =========================================================
+   MEDIA
+========================================================= */
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+/* =========================================================
+   LINKS / BUTTONS
+========================================================= */
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font: inherit;
+}
 
 /* =========================================================
    SELECTION
@@ -96,7 +107,6 @@ body {
   background: rgba(124, 58, 237, 0.16);
   color: inherit;
 }
-
 
 /* =========================================================
    SCROLLBAR
@@ -128,7 +138,6 @@ body {
   background: #52525b;
 }
 
-
 /* =========================================================
    PREMIUM CONTAINER
 ========================================================= */
@@ -144,28 +153,8 @@ body {
   padding-right: 40px;
 }
 
-
-/*
- * Karena canvas minimum 1280px,
- * container desktop tetap konsisten.
- */
-
-@media (max-width: 1279px) {
-  .container-premium {
-    width: 1280px;
-    max-width: 1280px;
-
-    padding-left: 40px;
-    padding-right: 40px;
-
-    margin-left: 0;
-    margin-right: 0;
-  }
-}
-
-
 /* =========================================================
-   CLEAN PREMIUM GRID
+   GRID BACKGROUND
 ========================================================= */
 
 .grid-background {
@@ -198,7 +187,6 @@ body {
     );
 }
 
-
 /* =========================================================
    SOFT BACKGROUND
 ========================================================= */
@@ -223,7 +211,6 @@ body {
     );
 }
 
-
 /* =========================================================
    PREMIUM GLASS
 ========================================================= */
@@ -239,10 +226,8 @@ body {
 
 .dark .glass {
   background: rgba(9, 9, 11, 0.78);
-
   border-color: rgba(63, 63, 70, 0.7);
 }
-
 
 /* =========================================================
    PREMIUM CARD
@@ -292,7 +277,6 @@ body {
     0 18px 45px rgba(0, 0, 0, 0.28);
 }
 
-
 /* =========================================================
    GRADIENT TEXT
 ========================================================= */
@@ -325,9 +309,8 @@ body {
   color: transparent;
 }
 
-
 /* =========================================================
-   SUBTLE ACCENT
+   ACCENT
 ========================================================= */
 
 .accent {
@@ -341,6 +324,8 @@ body {
 .accent-dot {
   width: 7px;
   height: 7px;
+
+  flex-shrink: 0;
 
   border-radius: 999px;
 
@@ -356,7 +341,6 @@ body {
   box-shadow:
     0 0 0 4px rgba(167, 139, 250, 0.1);
 }
-
 
 /* =========================================================
    PREMIUM GLOW
@@ -374,7 +358,6 @@ body {
     0 20px 60px rgba(124, 58, 237, 0.08);
 }
 
-
 /* =========================================================
    SECTION
 ========================================================= */
@@ -383,13 +366,6 @@ body {
   padding-top: 100px;
   padding-bottom: 100px;
 }
-
-
-/*
- * Jangan mengecilkan padding pada mobile.
- * Karena kita mempertahankan desktop layout.
- */
-
 
 /* =========================================================
    SECTION LABEL
@@ -414,7 +390,6 @@ body {
   color: #a1a1aa;
 }
 
-
 /* =========================================================
    FOCUS
 ========================================================= */
@@ -428,16 +403,6 @@ select:focus-visible {
   outline-offset: 3px;
 }
 
-
-/* =========================================================
-   IMAGE
-========================================================= */
-
-img {
-  max-width: 100%;
-}
-
-
 /* =========================================================
    INPUT
 ========================================================= */
@@ -448,6 +413,136 @@ select {
   font: inherit;
 }
 
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 1279px) {
+  .container-premium {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
+  .container-premium {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .section-padding {
+    padding-top: 88px;
+    padding-bottom: 88px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 640px) {
+  html {
+    font-size: 16px;
+    overflow-x: hidden;
+  }
+
+  body {
+    width: 100%;
+    min-width: 0;
+    overflow-x: hidden;
+  }
+
+  .container-premium {
+    width: 100%;
+    max-width: 100%;
+
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .section-padding {
+    padding-top: 72px;
+    padding-bottom: 72px;
+  }
+
+  /* =====================================================
+     TYPOGRAPHY
+  ===================================================== */
+
+  h1 {
+    font-size: clamp(3.1rem, 14vw, 4.5rem);
+    line-height: 1.02;
+    letter-spacing: -0.045em;
+  }
+
+  h2 {
+    font-size: clamp(2.1rem, 9vw, 3rem);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+    line-height: 1.25;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  /* =====================================================
+     CARDS
+  ===================================================== */
+
+  .premium-card {
+    border-radius: 18px;
+  }
+
+  /* =====================================================
+     GRID BACKGROUND
+  ===================================================== */
+
+  .grid-background {
+    background-size: 36px 36px;
+  }
+
+  /* =====================================================
+     TOUCH TARGET
+  ===================================================== */
+
+  button {
+    min-height: 44px;
+  }
+}
+
+/* =========================================================
+   SMALL PHONE
+========================================================= */
+
+@media (max-width: 380px) {
+  .container-premium {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .section-padding {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  h1 {
+    font-size: 2.8rem;
+  }
+
+  h2 {
+    font-size: 1.9rem;
+  }
+}
 
 /* =========================================================
    REDUCED MOTION
@@ -461,81 +556,5 @@ select {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-  }
-}
-
-/* =========================
-   MOBILE OPTIMIZATION
-========================= */
-
-@media (max-width: 640px) {
-  html {
-    font-size: 16px;
-  }
-
-  body {
-    overflow-x: hidden;
-  }
-
-  .container-premium {
-    width: 100%;
-    max-width: 100%;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
-  .section-padding {
-    padding-top: 64px;
-    padding-bottom: 64px;
-  }
-
-  /* Heading utama */
-  h1 {
-    font-size: clamp(2.4rem, 11vw, 3.5rem);
-    line-height: 1.05;
-    letter-spacing: -0.04em;
-  }
-
-  h2 {
-    font-size: clamp(2rem, 9vw, 3rem);
-    line-height: 1.1;
-    letter-spacing: -0.03em;
-  }
-
-  h3 {
-    font-size: 1.25rem;
-    line-height: 1.25;
-  }
-
-  p {
-    font-size: 1rem;
-    line-height: 1.7;
-  }
-
-  /* Button */
-  button,
-  a {
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  /* Card */
-  .premium-card {
-    border-radius: 18px;
-  }
-}
-
-/* HP kecil */
-@media (max-width: 380px) {
-  .container-premium {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-
-  h1 {
-    font-size: 2.2rem;
-  }
-
-  h2 {
-    font-size: 1.8rem;
   }
 }

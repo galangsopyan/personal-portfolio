@@ -93,13 +93,13 @@ export default function Hero() {
           }}
           className="
             absolute
-            left-[-25%]
+            left-[-30%]
             top-[5%]
-            h-[300px]
-            w-[300px]
+            h-[280px]
+            w-[280px]
             rounded-full
             bg-violet-500
-            blur-[120px]
+            blur-[110px]
             sm:left-[-12%]
             sm:h-[420px]
             sm:w-[420px]
@@ -121,13 +121,13 @@ export default function Hero() {
           }}
           className="
             absolute
-            right-[-25%]
+            right-[-30%]
             top-[15%]
-            h-[350px]
-            w-[350px]
+            h-[300px]
+            w-[300px]
             rounded-full
             bg-cyan-400
-            blur-[120px]
+            blur-[110px]
             sm:right-[-10%]
             sm:h-[500px]
             sm:w-[500px]
@@ -141,10 +141,10 @@ export default function Hero() {
           className="
             absolute
             inset-0
-            opacity-40
+            opacity-35
             sm:opacity-60
             [background-image:linear-gradient(to_right,rgba(120,120,120,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(120,120,120,0.04)_1px,transparent_1px)]
-            [background-size:50px_50px]
+            [background-size:38px_38px]
             sm:[background-size:60px_60px]
           "
         />
@@ -156,7 +156,7 @@ export default function Hero() {
             absolute
             inset-x-0
             bottom-0
-            h-40
+            h-32
             bg-gradient-to-t
             from-[var(--background)]
             to-transparent
@@ -177,10 +177,11 @@ export default function Hero() {
           w-full
           max-w-7xl
           items-center
-          gap-12
+          gap-14
           px-5
           pb-20
           pt-8
+          sm:gap-16
           sm:px-8
           sm:pt-10
           lg:min-h-[calc(100vh-8rem)]
@@ -255,7 +256,7 @@ export default function Hero() {
               dark:text-violet-300
             "
           >
-            <span className="relative flex h-2 w-2">
+            <span className="relative flex h-2 w-2 shrink-0">
               <span
                 className="
                   absolute
@@ -304,7 +305,7 @@ export default function Hero() {
             }}
             className="
               max-w-[900px]
-              text-[clamp(2.75rem,12vw,4rem)]
+              text-[clamp(3.1rem,14vw,4.5rem)]
               font-black
               leading-[0.94]
               tracking-[-0.055em]
@@ -410,13 +411,14 @@ export default function Hero() {
               duration: 0.6,
             }}
             className="
-              mt-5
-              max-w-2xl
-              text-[15px]
+              mt-4
+              max-w-xl
+              text-[16px]
               leading-7
-              text-zinc-600
-              sm:mt-6
-              sm:text-lg
+              text-zinc-500
+              sm:mt-5
+              sm:text-[17px]
+              sm:leading-8
               dark:text-zinc-400
             "
           >
@@ -467,10 +469,13 @@ export default function Hero() {
                   bg-white/60
                   px-3
                   py-1.5
-                  text-xs
+                  text-sm
                   font-medium
                   text-zinc-600
                   backdrop-blur-xl
+                  sm:px-3.5
+                  sm:py-2
+                  sm:text-[15px]
                   dark:border-zinc-800
                   dark:bg-zinc-900/50
                   dark:text-zinc-400
@@ -501,9 +506,11 @@ export default function Hero() {
             className="
               mt-8
               grid
+              w-full
               grid-cols-1
               gap-3
               sm:flex
+              sm:w-auto
               sm:flex-wrap
             "
           >
@@ -514,6 +521,7 @@ export default function Hero() {
               className="
                 group
                 inline-flex
+                min-h-12
                 w-full
                 items-center
                 justify-center
@@ -557,6 +565,7 @@ export default function Hero() {
               href="#contact"
               className="
                 inline-flex
+                min-h-12
                 w-full
                 items-center
                 justify-center
@@ -593,6 +602,7 @@ export default function Hero() {
               download
               className="
                 inline-flex
+                min-h-12
                 w-full
                 items-center
                 justify-center
@@ -655,7 +665,7 @@ export default function Hero() {
             <div>
               <p
                 className="
-                  text-xl
+                  text-2xl
                   font-black
                   sm:text-2xl
                 "
@@ -666,7 +676,7 @@ export default function Hero() {
               <p
                 className="
                   mt-1
-                  text-[10px]
+                  text-[11px]
                   text-zinc-500
                   sm:text-xs
                 "
@@ -681,14 +691,14 @@ export default function Hero() {
               className="
                 border-l
                 border-zinc-200
-                pl-3
+                pl-4
                 sm:pl-6
                 dark:border-zinc-800
               "
             >
               <p
                 className="
-                  text-xl
+                  text-2xl
                   font-black
                   sm:text-2xl
                 "
@@ -699,7 +709,7 @@ export default function Hero() {
               <p
                 className="
                   mt-1
-                  text-[10px]
+                  text-[11px]
                   text-zinc-500
                   sm:text-xs
                 "
@@ -714,14 +724,14 @@ export default function Hero() {
               className="
                 border-l
                 border-zinc-200
-                pl-3
+                pl-4
                 sm:pl-6
                 dark:border-zinc-800
               "
             >
               <p
                 className="
-                  text-xl
+                  text-2xl
                   font-black
                   sm:text-2xl
                 "
@@ -732,7 +742,7 @@ export default function Hero() {
               <p
                 className="
                   mt-1
-                  text-[10px]
+                  text-[11px]
                   text-zinc-500
                   sm:text-xs
                 "
@@ -766,7 +776,7 @@ export default function Hero() {
           className="
             relative
             w-full
-            px-1
+            px-0
             sm:px-0
           "
           onMouseMove={handleMouseMove}
@@ -790,13 +800,13 @@ export default function Hero() {
               absolute
               left-1/2
               top-1/2
-              h-[70%]
-              w-[70%]
+              h-[75%]
+              w-[75%]
               -translate-x-1/2
               -translate-y-1/2
               rounded-full
               bg-violet-600/30
-              blur-[80px]
+              blur-[70px]
               sm:blur-[100px]
             "
           />
@@ -886,14 +896,15 @@ export default function Hero() {
             <div
               className="
                 relative
-                aspect-[16/9]
+                aspect-[4/5]
                 w-full
                 overflow-hidden
-                rounded-[22px]
+                rounded-[24px]
                 border
                 border-white/10
                 bg-zinc-950
                 shadow-[0_25px_70px_rgba(76,29,149,0.25)]
+                sm:aspect-[16/9]
                 sm:rounded-[28px]
                 sm:shadow-[0_35px_100px_rgba(76,29,149,0.25)]
                 dark:shadow-[0_25px_70px_rgba(124,58,237,0.2)]
@@ -904,12 +915,12 @@ export default function Hero() {
                 src="/profile.jpg"
                 alt="Galang Sopyan - Full Stack Developer"
                 fill
-                sizes="(max-width: 640px) 94vw,(max-width: 768px) 90vw,50vw"
+                priority
+                sizes="(max-width: 640px) 94vw, (max-width: 768px) 90vw, 50vw"
                 className="
                   object-cover
                   object-center
                 "
-                priority
               />
 
               {/* Dark overlay */}
@@ -933,7 +944,7 @@ export default function Hero() {
                   pointer-events-none
                   absolute
                   inset-0
-                  rounded-[22px]
+                  rounded-[24px]
                   ring-1
                   ring-inset
                   ring-white/10
@@ -1085,7 +1096,7 @@ export default function Hero() {
                 bottom-[-14px]
                 left-1/2
                 z-20
-                w-[185px]
+                w-[190px]
                 -translate-x-1/2
                 rounded-xl
                 border
