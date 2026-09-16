@@ -598,7 +598,7 @@ export default function Hero() {
             {/* CV */}
 
             <a
-              href="/cv.pdf"
+              href="/CV-Galang-Sopyan.pdf"
               download
               className="
                 inline-flex
