@@ -562,7 +562,7 @@ export default function Hero() {
             {/* Contact */}
 
             <a
-              href="#contact"
+              href="/contact"
               className="
                 inline-flex
                 min-h-12
@@ -981,102 +981,7 @@ export default function Hero() {
               />
             </div>
 
-            {/* ==================================================
-                CODE BADGE
-            ================================================== */}
 
-            <motion.div
-              animate={{
-                y: [0, -10, 0],
-                rotate: [0, 4, 0],
-              }}
-              transition={{
-                duration: 5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="
-                absolute
-                right-2
-                top-[8%]
-                z-20
-                flex
-                h-12
-                w-12
-                items-center
-                justify-center
-                rounded-xl
-                border
-                border-white/10
-                bg-white/90
-                text-violet-600
-                shadow-2xl
-                backdrop-blur-xl
-                sm:right-[-8px]
-                sm:top-[12%]
-                sm:h-16
-                sm:w-16
-                sm:rounded-2xl
-              "
-            >
-              <Code2
-                size={21}
-                className="sm:hidden"
-              />
-
-              <Code2
-                size={25}
-                className="hidden sm:block"
-              />
-            </motion.div>
-
-            {/* ==================================================
-                AI BADGE
-            ================================================== */}
-
-            <motion.div
-              animate={{
-                y: [0, 8, 0],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="
-                absolute
-                left-2
-                top-[30%]
-                z-20
-                flex
-                h-11
-                w-11
-                items-center
-                justify-center
-                rounded-xl
-                border
-                border-white/10
-                bg-zinc-950/90
-                text-cyan-400
-                shadow-2xl
-                backdrop-blur-xl
-                sm:left-[-20px]
-                sm:top-[32%]
-                sm:h-14
-                sm:w-14
-                sm:rounded-2xl
-              "
-            >
-              <BrainCircuit
-                size={20}
-                className="sm:hidden"
-              />
-
-              <BrainCircuit
-                size={23}
-                className="hidden sm:block"
-              />
-            </motion.div>
 
             {/* ==================================================
                 AVAILABLE BADGE
@@ -1093,7 +998,7 @@ export default function Hero() {
               }}
               className="
                 absolute
-                bottom-[-14px]
+                bottom-[-30px]
                 left-1/2
                 z-20
                 w-[190px]
@@ -1107,7 +1012,7 @@ export default function Hero() {
                 text-white
                 shadow-xl
                 backdrop-blur-xl
-                sm:bottom-[-18px]
+                sm:bottom-[-30px]
                 sm:left-[-10px]
                 sm:w-[180px]
                 sm:translate-x-0
@@ -1162,7 +1067,7 @@ export default function Hero() {
               }}
               className="
                 absolute
-                bottom-[-18px]
+                bottom-[-30px]
                 right-0
                 z-20
                 hidden
@@ -1231,8 +1136,8 @@ export default function Hero() {
           sm:flex
         "
       >
-        Explore
-
+        Scroll Down
+        
         <ArrowDown size={15} />
       </motion.a>
     </section>
